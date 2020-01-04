@@ -377,7 +377,7 @@ class BaseTable extends React.PureComponent {
     const { footerClassName, footerRenderer } = this.props;
 
     const footerClass = callOrReturn(footerClassName, { columns, footerIndex });
-    const extraProps = callOrReturn(this.propsfooterrProps, { columns, footerIndex });
+    const extraProps = callOrReturn(this.propsfooterProps, { columns, footerIndex });
 
     const className = cn(this._prefixClass('footer-row'), footerClass, {
       [this._prefixClass('footer-row--resizing')]: !!this.state.resizingKey,
