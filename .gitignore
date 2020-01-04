@@ -11,8 +11,3 @@ npm-debug.log.*
 # yarn
 yarn-error.log
 yarn-error.log.*
-
-styles.css
-es/
-lib/
-coverage/
