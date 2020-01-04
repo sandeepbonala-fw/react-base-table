@@ -4,6 +4,7 @@ import cn from 'classnames';
 import memoize from 'memoize-one';
 
 import GridTable from './GridTable';
+import TableHeaderRow from './TableHeaderRow';
 import TableFooterRow from './TableFooterRow';
 import TableRow from './TableRow';
 import TableHeaderCell from './TableHeaderCell';
