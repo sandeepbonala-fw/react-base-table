@@ -149,7 +149,7 @@ class GridTable extends React.PureComponent {
   }
 
   _setFooterRef(ref){
-    this.footerTef = ref;
+    this.footerRef = ref;
   }
 
   _setBodyRef(ref) {
