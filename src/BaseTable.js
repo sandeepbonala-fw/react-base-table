@@ -76,7 +76,9 @@ class BaseTable extends React.PureComponent {
     this.renderRow = this.renderRow.bind(this);
     this.renderRowCell = this.renderRowCell.bind(this);
     this.renderHeader = this.renderHeader.bind(this);
+    this.renderFooter = this.renderFooter.bind(this);
     this.renderHeaderCell = this.renderHeaderCell.bind(this);
+    this.renderFooterCell = this.renderFooterCell.bind(this);
 
     this._handleScroll = this._handleScroll.bind(this);
     this._handleVerticalScroll = this._handleVerticalScroll.bind(this);
@@ -368,6 +370,33 @@ class BaseTable extends React.PureComponent {
     return <TableHeaderRow {...headerProps} />;
   }
 
+  renderFooter({ columns, footerIndex, style }) {
+    const { footerClassName, footerRenderer } = this.props;
+
+    const footerClass = callOrReturn(footerClassName, { columns, footerIndex });
+    const extraProps = callOrReturn(this.propsfooterrProps, { columns, footerIndex });
+
+    const className = cn(this._prefixClass('footer-row'), footerClass, {
+      [this._prefixClass('footer-row--resizing')]: !!this.state.resizingKey,
+      [this._prefixClass('footer-row--customized')]: footerRenderer,
+    });
+
+    const footerProps = {
+      ...extraProps,
+      role: 'row',
+      key: `footer-${footerIndex}`,
+      className,
+      style,
+      columns,
+      footerIndex,
+      footerRenderer,
+      cellRenderer: this.renderFooterCell,
+      expandColumnKey: this.props.expandColumnKey
+    };
+
+    return <TableFooterRow {...footerProps} />;
+  }
+
   renderHeaderCell({ columns, column, columnIndex, headerIndex, expandIcon }) {
     if (column[ColumnManager.PlaceholderKey]) {
       return (
@@ -441,6 +470,51 @@ class BaseTable extends React.PureComponent {
             onResize={this._handleColumnResize}
           />
         )}
+      </Tag>
+    );
+  }
+
+  renderFooterCell({ columns, column, columnIndex, footerIndex }) {
+    if (column[ColumnManager.PlaceholderKey]) {
+      return (
+        <div
+          key={`footer-${footerIndex}-cell-${column.key}-placeholder`}
+          className={this._prefixClass('footer-cell-placeholder')}
+          style={this.columnManager.getColumnStyle(column.key)}
+        />
+      );
+    }
+
+    const { footerClassName, footerRenderer } = column;
+    const { footerCellProps } = this.props;
+    const TableFooterCell = this._getComponent('TableFooterCell');
+
+    const cellProps = { columns, column, columnIndex, footerIndex, container: this };
+    const cell = renderElement(
+      footerRenderer || <TableFooterCell className={this._prefixClass('footer-cell-text')} />,
+      cellProps
+    );
+
+    const cellCls = callOrReturn(footerClassName, { columns, column, columnIndex, footerIndex });
+    const cls = cn(this._prefixClass('footer-cell'), cellCls, {
+      [this._prefixClass('footer-cell--align-center')]: column.align === Alignment.CENTER,
+      [this._prefixClass('footer-cell--align-right')]: column.align === Alignment.RIGHT,
+      [this._prefixClass('footer-cell--sortable')]: column.sortable,
+      [this._prefixClass('footer-cell--resizing')]: column.key === this.state.resizingKey,
+    });
+    const extraProps = callOrReturn(footerCellProps, { columns, column, columnIndex, footerIndex });
+    const { tagName, ...rest } = extraProps || {};
+    const Tag = tagName || 'div';
+    return (
+      <Tag
+        role="gridcell"
+        key={`footer-${footerIndex}-cell-${column.key}`}
+        {...rest}
+        className={cls}
+        style={this.columnManager.getColumnStyle(column.key)}
+        data-key={column.key}
+      >
+        {cell}
       </Tag>
     );
   }
@@ -532,6 +606,7 @@ class BaseTable extends React.PureComponent {
         headerWidth={columnsWidth + scrollbarWidth}
         bodyWidth={columnsWidth}
         headerRenderer={this.renderHeader}
+        footerRenderer={this.remderFooter}
         rowRenderer={this.renderRow}
         onScroll={this._handleVerticalScroll}
         onRowsRendered={noop}
@@ -568,15 +643,15 @@ class BaseTable extends React.PureComponent {
     return <div className={this._prefixClass('resizing-line')} style={style} />;
   }
 
-  renderFooter() {
-    const { footerHeight, footerRenderer } = this.props;
-    if (footerHeight === 0) return null;
-    return (
-      <div className={this._prefixClass('footer')} style={{ height: footerHeight }}>
-        {renderElement(footerRenderer)}
-      </div>
-    );
-  }
+  // renderFooter() {
+  //   const { footerHeight, footerRenderer } = this.props;
+  //   if (footerHeight === 0) return null;
+  //   return (
+  //     <div className={this._prefixClass('footer')} style={{ height: footerHeight }}>
+  //       {renderElement(footerRenderer)}
+  //     </div>
+  //   );
+  // }
 
   renderEmptyLayer() {
     const { data, footerHeight, emptyRenderer } = this.props;
@@ -638,7 +713,7 @@ class BaseTable extends React.PureComponent {
     });
     return (
       <div ref={this._setContainerRef} className={cls} style={containerStyle}>
-        {this.renderFooter()}
+        {/* {this.renderFooter()} */}
         {this.renderMainTable()}
         {this.renderLeftTable()}
         {this.renderRightTable()}

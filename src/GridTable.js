@@ -4,6 +4,7 @@ import cn from 'classnames';
 import { FixedSizeGrid as Grid } from 'react-window';
 
 import Header from './TableHeader';
+import Footer from './TableFooter';
 
 /**
  * A wrapper of the Grid for internal only
@@ -13,6 +14,7 @@ class GridTable extends React.PureComponent {
     super(props);
 
     this._setHeaderRef = this._setHeaderRef.bind(this);
+    this._setFooterRef = this._setFooterRef.bind(this);
     this._setBodyRef = this._setBodyRef.bind(this);
     this._itemKey = this._itemKey.bind(this);
     this._handleItemsRendered = this._handleItemsRendered.bind(this);
@@ -22,11 +24,13 @@ class GridTable extends React.PureComponent {
 
   forceUpdateTable() {
     this.headerRef && this.headerRef.forceUpdate();
+    this.footerRef && this.footerRef.forceUpdate();
     this.bodyRef && this.bodyRef.forceUpdate();
   }
 
   scrollToPosition(args) {
     this.headerRef && this.headerRef.scrollTo(args.scrollLeft);
+    this.footerRef && this.footerRef.scrollTo(args.scrollLeft);
     this.bodyRef && this.bodyRef.scrollTo(args);
   }
 
@@ -36,6 +40,7 @@ class GridTable extends React.PureComponent {
 
   scrollToLeft(scrollLeft) {
     this.headerRef && this.headerRef.scrollTo(scrollLeft);
+    this.footerRef && this.footerRef.scrollTo(scrollLeft);
     this.bodyRef && this.bodyRef.scrollToPosition({ scrollLeft });
   }
 
@@ -71,6 +76,7 @@ class GridTable extends React.PureComponent {
       ...rest
     } = this.props;
     const headerHeight = this._getHeaderHeight();
+    const footerHeight = this._getFooterHeight();
     const frozenRowCount = frozenData.length;
     const frozenRowsHeight = rowHeight * frozenRowCount;
     const cls = cn(`${classPrefix}__table`, className);
@@ -117,12 +123,33 @@ class GridTable extends React.PureComponent {
             hoveredRowKey={frozenRowCount > 0 ? hoveredRowKey : null}
           />
         )}
+        {footerHeight > 0 && (
+          <Footer
+            {...rest}
+            className={`${classPrefix}__footer`}
+            ref={this._setFooterRef}
+            data={data}
+            frozenData={frozenData}
+            width={width}
+            height={footerHeight}
+            rowWidth={headerWidth}
+            rowHeight={rowHeight}
+            footerHeight={this.props.footerHeight}
+            headerRenderer={this.props.footerRenderer}
+            rowRenderer={this.props.rowRenderer}
+            hoveredRowKey={frozenRowCount > 0 ? hoveredRowKey : null}
+          />
+        )}
       </div>
     );
   }
 
   _setHeaderRef(ref) {
     this.headerRef = ref;
+  }
+
+  _setFooterRef(ref){
+    this.footerTef = ref;
   }
 
   _setBodyRef(ref) {
@@ -140,6 +167,11 @@ class GridTable extends React.PureComponent {
       return headerHeight.reduce((sum, height) => sum + height, 0);
     }
     return headerHeight;
+  }
+
+  _getFooterHeight(){
+    const { footerHeight } = this.props;
+    return footerHeight;
   }
 
   _handleItemsRendered({ overscanRowStartIndex, overscanRowStopIndex, visibleRowStartIndex, visibleRowStopIndex }) {
