@@ -108,7 +108,7 @@ class GridTable extends React.PureComponent {
           itemKey={this._itemKey}
           frozenData={frozenData}
           width={width}
-          height={Math.max(height - headerHeight - frozenRowsHeight, 0)}
+          height={Math.max(height - headerHeight - footerHeight - frozenRowsHeight, 0)}
           rowHeight={rowHeight}
           rowCount={data.length}
           overscanRowCount={overscanRowCount}
@@ -171,7 +171,7 @@ class GridTable extends React.PureComponent {
 
   _getFooterHeight(){
     const { footerHeight } = this.props;
-    return footerHeight;
+    return footerHeight || 0;
   }
 
   _handleItemsRendered({ overscanRowStartIndex, overscanRowStopIndex, visibleRowStartIndex, visibleRowStopIndex }) {

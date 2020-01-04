@@ -144,7 +144,7 @@ function (_React$PureComponent) {
       itemKey: this._itemKey,
       frozenData: frozenData,
       width: width,
-      height: Math.max(height - headerHeight - frozenRowsHeight, 0),
+      height: Math.max(height - headerHeight - footerHeight - frozenRowsHeight, 0),
       rowHeight: rowHeight,
       rowCount: data.length,
       overscanRowCount: overscanRowCount,
@@ -208,7 +208,7 @@ function (_React$PureComponent) {
 
   _proto._getFooterHeight = function _getFooterHeight() {
     var footerHeight = this.props.footerHeight;
-    return footerHeight;
+    return footerHeight || 0;
   };
 
   _proto._handleItemsRendered = function _handleItemsRendered(_ref2) {
