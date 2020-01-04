@@ -4,9 +4,10 @@ import cn from 'classnames';
 import memoize from 'memoize-one';
 
 import GridTable from './GridTable';
-import TableHeaderRow from './TableHeaderRow';
+import TableFooterRow from './TableFooterRow';
 import TableRow from './TableRow';
 import TableHeaderCell from './TableHeaderCell';
+import TableFooterCell from './TableFooterCell';
 import TableCell from './TableCell';
 import Column, { Alignment, FrozenDirection } from './Column';
 import SortOrder from './SortOrder';
@@ -41,6 +42,7 @@ const getContainerStyle = (width, maxWidth, height) => ({
 const DEFAULT_COMPONENTS = {
   TableCell,
   TableHeaderCell,
+  TableFooterCell,
   ExpandIcon,
   SortIndicator,
 };
@@ -1240,6 +1242,7 @@ BaseTable.propTypes = {
   components: PropTypes.shape({
     TableCell: PropTypes.func,
     TableHeaderCell: PropTypes.func,
+    TableFooterCell: PropTypes.func,
     ExpandIcon: PropTypes.func,
     SortIndicator: PropTypes.func,
   }),
