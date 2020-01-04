@@ -148,6 +148,10 @@ class GridTable extends React.PureComponent {
     this.headerRef = ref;
   }
 
+  _setFooterRef(ref){
+    this.footerTef = ref;
+  }
+
   _setBodyRef(ref) {
     this.bodyRef = ref;
   }
@@ -163,6 +167,11 @@ class GridTable extends React.PureComponent {
       return headerHeight.reduce((sum, height) => sum + height, 0);
     }
     return headerHeight;
+  }
+
+  _getFooterHeight(){
+    const { footerHeight } = this.props;
+    return footerHeight;
   }
 
   _handleItemsRendered({ overscanRowStartIndex, overscanRowStopIndex, visibleRowStartIndex, visibleRowStopIndex }) {
