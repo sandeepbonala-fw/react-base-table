@@ -788,15 +788,15 @@ class BaseTable extends React.PureComponent {
   }
 
   _getTableHeight() {
-    const { height, maxHeight, footerHeight } = this.props;
-    let tableHeight = height - footerHeight;
+    const { height, maxHeight } = this.props;
+    let tableHeight = height;
 
     if (maxHeight > 0) {
       const frozenRowsHeight = this._getFrozenRowsHeight();
       const totalRowsHeight = this.getTotalRowsHeight();
       const headerHeight = this._getHeaderHeight();
       const totalHeight = headerHeight + frozenRowsHeight + totalRowsHeight + this._horizontalScrollbarSize;
-      tableHeight = Math.min(totalHeight, maxHeight - footerHeight);
+      tableHeight = Math.min(totalHeight, maxHeight);
     }
 
     return tableHeight;
