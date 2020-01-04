@@ -179,7 +179,7 @@ function (_React$PureComponent) {
   };
 
   _proto._setFooterRef = function _setFooterRef(ref) {
-    this.footerTef = ref;
+    this.footerRef = ref;
   };
 
   _proto._setBodyRef = function _setBodyRef(ref) {
