@@ -474,7 +474,7 @@ function (_React$PureComponent) {
       columns: columns,
       footerIndex: footerIndex
     });
-    var extraProps = callOrReturn(this.propsfooterProps, {
+    var extraProps = callOrReturn(this.props.footerProps, {
       columns: columns,
       footerIndex: footerIndex
     });
