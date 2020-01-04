@@ -936,9 +936,8 @@ function (_React$PureComponent) {
   _proto._getTableHeight = function _getTableHeight() {
     var _this$props14 = this.props,
         height = _this$props14.height,
-        maxHeight = _this$props14.maxHeight,
-        footerHeight = _this$props14.footerHeight;
-    var tableHeight = height - footerHeight;
+        maxHeight = _this$props14.maxHeight;
+    var tableHeight = height;
 
     if (maxHeight > 0) {
       var frozenRowsHeight = this._getFrozenRowsHeight();
@@ -948,7 +947,7 @@ function (_React$PureComponent) {
       var headerHeight = this._getHeaderHeight();
 
       var totalHeight = headerHeight + frozenRowsHeight + totalRowsHeight + this._horizontalScrollbarSize;
-      tableHeight = Math.min(totalHeight, maxHeight - footerHeight);
+      tableHeight = Math.min(totalHeight, maxHeight);
     }
 
     return tableHeight;
