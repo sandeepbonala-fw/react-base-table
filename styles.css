@@ -71,7 +71,12 @@
   padding-right: 15px;
 }
 
+.BaseTable__table-frozen-right .BaseTable__footer-cell:last-child, .BaseTable__table-frozen-right .BaseTable__row-cell:last-child {
+  padding-right: 15px;
+}
+
 .BaseTable__table-frozen-right .BaseTable__header-row,
+.BaseTable__table-frozen-right .BaseTable__footer-row,
 .BaseTable__table-frozen-right .BaseTable__row {
   padding-left: 0 !important;
 }
@@ -84,7 +89,12 @@
   overflow: hidden !important;
 }
 
+.BaseTable__footer {
+  overflow: hidden !important;
+}
+
 .BaseTable .BaseTable__header,
+.BaseTable .BaseTable__footer,
 .BaseTable .BaseTable__body {
   outline: none;
 }
@@ -96,7 +106,19 @@
   box-sizing: border-box;
 }
 
+.BaseTable__footer-row, .BaseTable__row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eeeeee;
+  box-sizing: border-box;
+}
+
 .BaseTable__header-row {
+  background-color: #f8f8f8;
+  font-weight: 700;
+}
+
+.BaseTable__footer-row {
   background-color: #f8f8f8;
   font-weight: 700;
 }
@@ -122,12 +144,31 @@
   box-sizing: border-box;
 }
 
+.BaseTable__footer-cell, .BaseTable__row-cell {
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 7.5px;
+  box-sizing: border-box;
+}
+
 .BaseTable__header-cell--align-center, .BaseTable__row-cell--align-center {
   justify-content: center;
   text-align: center;
 }
 
+.BaseTable__footer-cell--align-center, .BaseTable__row-cell--align-center {
+  justify-content: center;
+  text-align: center;
+}
+
 .BaseTable__header-cell--align-right, .BaseTable__row-cell--align-right {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.BaseTable__footer-cell--align-right, .BaseTable__row-cell--align-right {
   justify-content: flex-end;
   text-align: right;
 }
@@ -138,7 +179,18 @@
   white-space: nowrap;
 }
 
+.BaseTable__footer-cell-text, .BaseTable__row-cell-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .BaseTable__header-cell {
+  position: relative;
+  cursor: default;
+}
+
+.BaseTable__footer-cell {
   position: relative;
   cursor: default;
 }
@@ -186,7 +238,24 @@
   left: -9999px;
 }
 
+.BaseTable__footer-cell--resizing .BaseTable__column-resizer::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  content: '';
+  left: -9999px;
+}
+
 .BaseTable__header-cell-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+.BaseTable__footer-cell-text {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: normal;
@@ -201,7 +270,15 @@
   display: none;
 }
 
+.BaseTable__footer-row--resizing .BaseTable__footer-cell:not(.BaseTable__header-cell--sorting) .BaseTable__sort-indicator {
+  display: none;
+}
+
 .BaseTable__header-row--resizing .BaseTable__header-cell:not(.BaseTable__header-cell--resizing) .BaseTable__column-resizer {
+  visibility: hidden;
+}
+
+.BaseTable__footer-row--resizing .BaseTable__footer-cell:not(.BaseTable__header-cell--resizing) .BaseTable__column-resizer {
   visibility: hidden;
 }
 
