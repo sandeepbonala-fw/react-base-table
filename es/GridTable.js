@@ -124,7 +124,20 @@ function (_React$PureComponent) {
     return React.createElement("div", _extends({
       role: "table",
       className: cls
-    }, containerProps), React.createElement(Grid, _extends({}, rest, {
+    }, containerProps), footerHeight > 0 && React.createElement(Footer, _extends({}, rest, {
+      className: classPrefix + "__footer",
+      ref: this._setFooterRef,
+      data: data,
+      frozenData: frozenData,
+      width: width,
+      height: footerHeight,
+      rowWidth: headerWidth,
+      rowHeight: rowHeight,
+      footerHeight: this.props.footerHeight,
+      headerRenderer: this.props.footerRenderer,
+      rowRenderer: this.props.rowRenderer,
+      hoveredRowKey: frozenRowCount > 0 ? hoveredRowKey : null
+    })), React.createElement(Grid, _extends({}, rest, {
       className: classPrefix + "__body",
       ref: this._setBodyRef,
       data: data,
@@ -156,19 +169,6 @@ function (_React$PureComponent) {
       rowHeight: rowHeight,
       headerHeight: this.props.headerHeight,
       headerRenderer: this.props.headerRenderer,
-      rowRenderer: this.props.rowRenderer,
-      hoveredRowKey: frozenRowCount > 0 ? hoveredRowKey : null
-    })), footerHeight > 0 && React.createElement(Footer, _extends({}, rest, {
-      className: classPrefix + "__footer",
-      ref: this._setFooterRef,
-      data: data,
-      frozenData: frozenData,
-      width: width,
-      height: footerHeight,
-      rowWidth: headerWidth,
-      rowHeight: rowHeight,
-      footerHeight: this.props.footerHeight,
-      headerRenderer: this.props.footerRenderer,
       rowRenderer: this.props.rowRenderer,
       hoveredRowKey: frozenRowCount > 0 ? hoveredRowKey : null
     })));

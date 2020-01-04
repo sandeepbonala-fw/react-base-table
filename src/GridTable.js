@@ -83,6 +83,23 @@ class GridTable extends React.PureComponent {
     const containerProps = containerStyle ? { style: containerStyle } : null;
     return (
       <div role="table" className={cls} {...containerProps}>
+      {footerHeight > 0 && (
+          <Footer
+            {...rest}
+            className={`${classPrefix}__footer`}
+            ref={this._setFooterRef}
+            data={data}
+            frozenData={frozenData}
+            width={width}
+            height={footerHeight}
+            rowWidth={headerWidth}
+            rowHeight={rowHeight}
+            footerHeight={this.props.footerHeight}
+            headerRenderer={this.props.footerRenderer}
+            rowRenderer={this.props.rowRenderer}
+            hoveredRowKey={frozenRowCount > 0 ? hoveredRowKey : null}
+          />
+        )}
         <Grid
           {...rest}
           className={`${classPrefix}__body`}
@@ -119,23 +136,6 @@ class GridTable extends React.PureComponent {
             rowHeight={rowHeight}
             headerHeight={this.props.headerHeight}
             headerRenderer={this.props.headerRenderer}
-            rowRenderer={this.props.rowRenderer}
-            hoveredRowKey={frozenRowCount > 0 ? hoveredRowKey : null}
-          />
-        )}
-        {footerHeight > 0 && (
-          <Footer
-            {...rest}
-            className={`${classPrefix}__footer`}
-            ref={this._setFooterRef}
-            data={data}
-            frozenData={frozenData}
-            width={width}
-            height={footerHeight}
-            rowWidth={headerWidth}
-            rowHeight={rowHeight}
-            footerHeight={this.props.footerHeight}
-            headerRenderer={this.props.footerRenderer}
             rowRenderer={this.props.rowRenderer}
             hoveredRowKey={frozenRowCount > 0 ? hoveredRowKey : null}
           />
