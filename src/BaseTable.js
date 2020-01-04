@@ -547,6 +547,7 @@ class BaseTable extends React.PureComponent {
         headerWidth={tableWidth + (fixed ? this._verticalScrollbarSize : 0)}
         bodyWidth={tableWidth}
         headerRenderer={this.renderHeader}
+        footerRenderer={this.renderFooter}
         rowRenderer={this.renderRow}
         onScroll={this._handleScroll}
         onRowsRendered={this._handleRowsRendered}
@@ -578,6 +579,7 @@ class BaseTable extends React.PureComponent {
         headerWidth={columnsWidth + offset}
         bodyWidth={columnsWidth + offset}
         headerRenderer={this.renderHeader}
+        footerRenderer={this.renderFooter}
         rowRenderer={this.renderRow}
         onScroll={this._handleVerticalScroll}
         onRowsRendered={noop}
@@ -609,7 +611,7 @@ class BaseTable extends React.PureComponent {
         headerWidth={columnsWidth + scrollbarWidth}
         bodyWidth={columnsWidth}
         headerRenderer={this.renderHeader}
-        footerRenderer={this.remderFooter}
+        footerRenderer={this.renderFooter}
         rowRenderer={this.renderRow}
         onScroll={this._handleVerticalScroll}
         onRowsRendered={noop}
