@@ -68,6 +68,7 @@ function (_React$PureComponent) {
     _this.state = {
       scrollbarSize: 0,
       hoveredRowKey: null,
+      clickedRowKey: null,
       resizingKey: null,
       resizingWidth: 0,
       expandedRowKeys: cloneArray(defaultExpandedRowKeys)
@@ -88,6 +89,7 @@ function (_React$PureComponent) {
     _this._handleVerticalScroll = _this._handleVerticalScroll.bind(_assertThisInitialized(_this));
     _this._handleRowsRendered = _this._handleRowsRendered.bind(_assertThisInitialized(_this));
     _this._handleRowHover = _this._handleRowHover.bind(_assertThisInitialized(_this));
+    _this._handleRowClick = _this._handleRowClick.bind(_assertThisInitialized(_this));
     _this._handleRowExpand = _this._handleRowExpand.bind(_assertThisInitialized(_this));
     _this._handleColumnResize = throttle(_this._handleColumnResize.bind(_assertThisInitialized(_this)), RESIZE_THROTTLE_WAIT);
     _this._handleColumnResizeStart = _this._handleColumnResizeStart.bind(_assertThisInitialized(_this));
@@ -323,7 +325,7 @@ function (_React$PureComponent) {
     });
     var rowKey = rowData[this.props.rowKey];
     var depth = this._depthMap[rowKey] || 0;
-    var className = cn(this._prefixClass('row'), rowClass, (_cn = {}, _cn[this._prefixClass("row--depth-" + depth)] = !!expandColumnKey && rowIndex >= 0, _cn[this._prefixClass('row--expanded')] = !!expandColumnKey && this.getExpandedRowKeys().indexOf(rowKey) >= 0, _cn[this._prefixClass('row--hovered')] = !isScrolling && rowKey === this.state.hoveredRowKey, _cn[this._prefixClass('row--frozen')] = depth === 0 && rowIndex < 0, _cn[this._prefixClass('row--customized')] = rowRenderer, _cn));
+    var className = cn(this._prefixClass('row'), rowClass, (_cn = {}, _cn[this._prefixClass("row--depth-" + depth)] = !!expandColumnKey && rowIndex >= 0, _cn[this._prefixClass('row--expanded')] = !!expandColumnKey && this.getExpandedRowKeys().indexOf(rowKey) >= 0, _cn[this._prefixClass('row--hovered')] = !isScrolling && rowKey === this.state.hoveredRowKey, _cn[this._prefixClass('row--clicked')] = rowKey === this.state.clickedRowKey, _cn[this._prefixClass('row--frozen')] = depth === 0 && rowIndex < 0, _cn[this._prefixClass('row--customized')] = rowRenderer, _cn));
 
     var rowProps = _objectSpread({}, extraProps, {
       role: 'row',
@@ -343,7 +345,8 @@ function (_React$PureComponent) {
       expandIconRenderer: this.renderExpandIcon,
       onRowExpand: this._handleRowExpand,
       // for fixed table, we need to sync the hover state across the inner tables
-      onRowHover: this.columnManager.hasFrozenColumns() ? this._handleRowHover : null
+      onRowHover: this.columnManager.hasFrozenColumns() ? this._handleRowHover : null,
+      onRowClick: this.columnManager.hasFrozenColumns() ? this._handleRowClick : null
     });
 
     return React.createElement(TableRow, rowProps);
@@ -849,7 +852,7 @@ function (_React$PureComponent) {
 
     var containerStyle = _objectSpread({}, style, {
       width: width,
-      height: this._getTableHeight() + footerHeight,
+      height: this._getTableHeight(),
       position: 'relative'
     });
 
@@ -1072,11 +1075,19 @@ function (_React$PureComponent) {
     });
   };
 
-  _proto._handleRowExpand = function _handleRowExpand(_ref13) {
-    var expanded = _ref13.expanded,
-        rowData = _ref13.rowData,
-        rowIndex = _ref13.rowIndex,
+  _proto._handleRowClick = function _handleRowClick(_ref13) {
+    var clicked = _ref13.clicked,
         rowKey = _ref13.rowKey;
+    this.setState({
+      clickedRowKey: clicked && this.state.clickedRowKey !== rowKey ? rowKey : null
+    });
+  };
+
+  _proto._handleRowExpand = function _handleRowExpand(_ref14) {
+    var expanded = _ref14.expanded,
+        rowData = _ref14.rowData,
+        rowIndex = _ref14.rowIndex,
+        rowKey = _ref14.rowKey;
     var expandedRowKeys = cloneArray(this.getExpandedRowKeys());
 
     if (expanded) {
@@ -1105,8 +1116,8 @@ function (_React$PureComponent) {
     this.props.onExpandedRowsChange(expandedRowKeys);
   };
 
-  _proto._handleColumnResize = function _handleColumnResize(_ref14, width) {
-    var key = _ref14.key;
+  _proto._handleColumnResize = function _handleColumnResize(_ref15, width) {
+    var key = _ref15.key;
     this.columnManager.setColumnWidth(key, width);
     this.setState({
       resizingWidth: width
@@ -1118,8 +1129,8 @@ function (_React$PureComponent) {
     });
   };
 
-  _proto._handleColumnResizeStart = function _handleColumnResizeStart(_ref15) {
-    var key = _ref15.key;
+  _proto._handleColumnResizeStart = function _handleColumnResizeStart(_ref16) {
+    var key = _ref16.key;
     this.setState({
       resizingKey: key
     });

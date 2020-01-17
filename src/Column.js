@@ -97,6 +97,11 @@ Column.propTypes = {
    * The renderer receives props `{ columns, column, columnIndex, headerIndex, container }`
    */
   headerRenderer: PropTypes.oneOfType([PropTypes.func, PropTypes.element]),
+  /**
+   * Custom column footer renderer
+   * The renderer receives props `{ columns, column, columnIndex, footerIndex, container }`
+   */
+  footerRenderer: PropTypes.oneOfType([PropTypes.func, PropTypes.element])
 };
 
 Column.Alignment = Alignment;
