@@ -69,7 +69,7 @@ class TableRow extends React.PureComponent {
   }
 
   _getEventHandlers(handlers = {}) {
-    const { rowData, rowIndex, rowKey, onRowHover } = this.props;
+    const { rowData, rowIndex, rowKey, onRowHover, onRowClick } = this.props;
     const eventHandlers = {};
     Object.keys(handlers).forEach(eventKey => {
       const callback = handlers[eventKey];
@@ -103,6 +103,20 @@ class TableRow extends React.PureComponent {
           event,
         });
         mouseLeaveHandler && mouseLeaveHandler(event);
+      };
+    }
+
+    if(onRowClick){
+      const mouseDownHandler = eventHandlers['onMouseDown'];
+      eventHandlers['onMouseDown'] = event => {
+        onRowClick({
+          clicked: true,
+          rowData,
+          rowIndex,
+          rowKey,
+          event,
+        });
+        mouseDownHandler && mouseDownHandler(event);
       };
     }
 

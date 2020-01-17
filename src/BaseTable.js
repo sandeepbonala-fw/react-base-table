@@ -64,6 +64,7 @@ class BaseTable extends React.PureComponent {
     this.state = {
       scrollbarSize: 0,
       hoveredRowKey: null,
+      clickedRowKey: null,
       resizingKey: null,
       resizingWidth: 0,
       expandedRowKeys: cloneArray(defaultExpandedRowKeys),
@@ -87,6 +88,7 @@ class BaseTable extends React.PureComponent {
     this._handleVerticalScroll = this._handleVerticalScroll.bind(this);
     this._handleRowsRendered = this._handleRowsRendered.bind(this);
     this._handleRowHover = this._handleRowHover.bind(this);
+    this._handleRowClick = this._handleRowClick.bind(this);
     this._handleRowExpand = this._handleRowExpand.bind(this);
     this._handleColumnResize = throttle(this._handleColumnResize.bind(this), RESIZE_THROTTLE_WAIT);
     this._handleColumnResizeStart = this._handleColumnResizeStart.bind(this);
@@ -273,6 +275,7 @@ class BaseTable extends React.PureComponent {
       [this._prefixClass(`row--depth-${depth}`)]: !!expandColumnKey && rowIndex >= 0,
       [this._prefixClass('row--expanded')]: !!expandColumnKey && this.getExpandedRowKeys().indexOf(rowKey) >= 0,
       [this._prefixClass('row--hovered')]: !isScrolling && rowKey === this.state.hoveredRowKey,
+      [this._prefixClass('row--clicked')]: rowKey === this.state.clickedRowKey,
       [this._prefixClass('row--frozen')]: depth === 0 && rowIndex < 0,
       [this._prefixClass('row--customized')]: rowRenderer,
     });
@@ -297,6 +300,7 @@ class BaseTable extends React.PureComponent {
       onRowExpand: this._handleRowExpand,
       // for fixed table, we need to sync the hover state across the inner tables
       onRowHover: this.columnManager.hasFrozenColumns() ? this._handleRowHover : null,
+      onRowClick: this.columnManager.hasFrozenColumns() ? this._handleRowClick : null
     };
 
     return <TableRow {...rowProps} />;
@@ -705,7 +709,7 @@ class BaseTable extends React.PureComponent {
     const containerStyle = {
       ...style,
       width,
-      height: this._getTableHeight() + footerHeight,
+      height: this._getTableHeight(),
       position: 'relative',
     };
     const cls = cn(classPrefix, className, {
@@ -917,6 +921,10 @@ class BaseTable extends React.PureComponent {
 
   _handleRowHover({ hovered, rowKey }) {
     this.setState({ hoveredRowKey: hovered ? rowKey : null });
+  }
+
+  _handleRowClick({ clicked, rowKey }) {
+    this.setState({ clickedRowKey: clicked && this.state.clickedRowKey !== rowKey ? rowKey : null });
   }
 
   _handleRowExpand({ expanded, rowData, rowIndex, rowKey }) {

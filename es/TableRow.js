@@ -107,7 +107,8 @@ function (_React$PureComponent) {
         rowData = _this$props3.rowData,
         rowIndex = _this$props3.rowIndex,
         rowKey = _this$props3.rowKey,
-        onRowHover = _this$props3.onRowHover;
+        onRowHover = _this$props3.onRowHover,
+        onRowClick = _this$props3.onRowClick;
     var eventHandlers = {};
     Object.keys(handlers).forEach(function (eventKey) {
       var callback = handlers[eventKey];
@@ -149,6 +150,21 @@ function (_React$PureComponent) {
           event: event
         });
         mouseLeaveHandler && mouseLeaveHandler(event);
+      };
+    }
+
+    if (onRowClick) {
+      var mouseDownHandler = eventHandlers['onMouseDown'];
+
+      eventHandlers['onMouseDown'] = function (event) {
+        onRowClick({
+          clicked: true,
+          rowData: rowData,
+          rowIndex: rowIndex,
+          rowKey: rowKey,
+          event: event
+        });
+        mouseDownHandler && mouseDownHandler(event);
       };
     }
 
