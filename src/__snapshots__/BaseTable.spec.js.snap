@@ -40,7 +40,8 @@ exports[`Table renders correctly 1`] = `
         }
       >
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -92,7 +93,8 @@ exports[`Table renders correctly 1`] = `
           </div>
         </div>
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -268,7 +270,8 @@ exports[`Table table can be set to disabled 1`] = `
         }
       >
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -320,7 +323,8 @@ exports[`Table table can be set to disabled 1`] = `
           </div>
         </div>
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -496,7 +500,8 @@ exports[`Table table can be set to fixed 1`] = `
         }
       >
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -548,7 +553,8 @@ exports[`Table table can be set to fixed 1`] = `
           </div>
         </div>
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -724,7 +730,8 @@ exports[`Table table can freeze rows 1`] = `
         }
       >
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -776,7 +783,8 @@ exports[`Table table can freeze rows 1`] = `
           </div>
         </div>
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -904,8 +912,8 @@ exports[`Table table can freeze rows 1`] = `
           </div>
         </div>
         <div
-          className="BaseTable__row BaseTable__row--frozen" onRowClick={null}
-
+          className="BaseTable__row BaseTable__row--frozen" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -954,7 +962,8 @@ exports[`Table table can freeze rows 1`] = `
           </div>
         </div>
         <div
-          className="BaseTable__row BaseTable__row--frozen" onRowClick={null}
+          className="BaseTable__row BaseTable__row--frozen" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -1051,7 +1060,8 @@ exports[`Table table can hide the header 1`] = `
         }
       >
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -1103,7 +1113,8 @@ exports[`Table table can hide the header 1`] = `
           </div>
         </div>
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -1203,7 +1214,8 @@ exports[`Table table can receive an emptyRenderer callback 1`] = `
         }
       >
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -1255,7 +1267,8 @@ exports[`Table table can receive an emptyRenderer callback 1`] = `
           </div>
         </div>
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -1431,7 +1444,8 @@ exports[`Table table can receive an headerRenderer callback 1`] = `
         }
       >
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -1483,7 +1497,8 @@ exports[`Table table can receive an headerRenderer callback 1`] = `
           </div>
         </div>
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -1616,7 +1631,8 @@ exports[`Table table can receive an rowRenderer callback 1`] = `
         }
       >
         <div
-          className="BaseTable__row BaseTable__row--customized" onRowClick={null}
+          className="BaseTable__row BaseTable__row--customized" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -1629,7 +1645,8 @@ exports[`Table table can receive an rowRenderer callback 1`] = `
           }
         />
         <div
-          className="BaseTable__row BaseTable__row--customized" onRowClick={null}
+          className="BaseTable__row BaseTable__row--customized" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -1766,7 +1783,8 @@ exports[`Table table can receive children 1`] = `
         }
       >
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -1818,7 +1836,8 @@ exports[`Table table can receive children 1`] = `
           </div>
         </div>
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -1994,7 +2013,8 @@ exports[`Table table can receive className 1`] = `
         }
       >
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -2046,7 +2066,8 @@ exports[`Table table can receive className 1`] = `
           </div>
         </div>
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -3224,7 +3245,8 @@ exports[`Table table can receive headerClassName 1`] = `
         }
       >
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -3276,7 +3298,8 @@ exports[`Table table can receive headerClassName 1`] = `
           </div>
         </div>
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -3452,7 +3475,8 @@ exports[`Table table can receive headerHeight 1`] = `
         }
       >
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -3504,7 +3528,8 @@ exports[`Table table can receive headerHeight 1`] = `
           </div>
         </div>
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -3680,7 +3705,8 @@ exports[`Table table can receive height 1`] = `
         }
       >
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -3732,7 +3758,8 @@ exports[`Table table can receive height 1`] = `
           </div>
         </div>
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -4138,7 +4165,8 @@ exports[`Table table can receive rowHeight 1`] = `
         }
       >
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -4190,7 +4218,8 @@ exports[`Table table can receive rowHeight 1`] = `
           </div>
         </div>
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -4367,7 +4396,8 @@ exports[`Table table can receive style 1`] = `
         }
       >
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -4419,7 +4449,8 @@ exports[`Table table can receive style 1`] = `
           </div>
         </div>
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -4595,7 +4626,8 @@ exports[`Table table can receive width 1`] = `
         }
       >
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -4647,7 +4679,8 @@ exports[`Table table can receive width 1`] = `
           </div>
         </div>
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -4823,7 +4856,8 @@ exports[`Table table can specific a different rowKey 1`] = `
         }
       >
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
@@ -4875,7 +4909,8 @@ exports[`Table table can specific a different rowKey 1`] = `
           </div>
         </div>
         <div
-          className="BaseTable__row" onRowClick={null}
+          className="BaseTable__row" 
+          onRowClick={null}
           role="row"
           style={
             Object {
