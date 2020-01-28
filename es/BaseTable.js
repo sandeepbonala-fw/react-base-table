@@ -951,6 +951,16 @@ function (_React$PureComponent) {
 
       var totalHeight = headerHeight + frozenRowsHeight + totalRowsHeight + this._horizontalScrollbarSize;
       tableHeight = Math.min(totalHeight, maxHeight);
+    } else {
+      var _frozenRowsHeight = this._getFrozenRowsHeight();
+
+      var _totalRowsHeight = this.getTotalRowsHeight();
+
+      var _headerHeight = this._getHeaderHeight();
+
+      var _totalHeight = _headerHeight + _frozenRowsHeight + _totalRowsHeight + this._horizontalScrollbarSize;
+
+      tableHeight = Math.min(_totalHeight, height);
     }
 
     return tableHeight;
