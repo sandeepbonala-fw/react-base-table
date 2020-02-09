@@ -792,23 +792,22 @@ class BaseTable extends React.PureComponent {
   }
 
   _getTableHeight() {
-    const { height, maxHeight } = this.props;
+    const { height, maxHeight, footerHeight } = this.props;
     let tableHeight = height;
-
+    const footer = footerHeight || 0;
     if (maxHeight > 0) {
       const frozenRowsHeight = this._getFrozenRowsHeight();
       const totalRowsHeight = this.getTotalRowsHeight();
       const headerHeight = this._getHeaderHeight();
-      const totalHeight = headerHeight + frozenRowsHeight + totalRowsHeight + this._horizontalScrollbarSize;
+      const totalHeight = headerHeight + frozenRowsHeight + totalRowsHeight + footer + this._horizontalScrollbarSize;
       tableHeight = Math.min(totalHeight, maxHeight);
     }else{
       const frozenRowsHeight = this._getFrozenRowsHeight();
       const totalRowsHeight = this.getTotalRowsHeight();
       const headerHeight = this._getHeaderHeight();
-      const totalHeight = headerHeight + frozenRowsHeight + totalRowsHeight + this._horizontalScrollbarSize;
+      const totalHeight = headerHeight + frozenRowsHeight + totalRowsHeight + footer + this._horizontalScrollbarSize ;
       tableHeight = Math.min(totalHeight, height);
     }
-
     return tableHeight;
   }
 
@@ -817,13 +816,14 @@ class BaseTable extends React.PureComponent {
   }
 
   _getFrozenContainerHeight() {
-    const { maxHeight } = this.props;
+    const { maxHeight, footerHeight } = this.props;
+    const footer = footerHeight || 0;
 
     const tableHeight = this._getTableHeight() - (this._data.length > 0 ? this._horizontalScrollbarSize : 0);
     // in auto height mode tableHeight = totalHeight
     if (maxHeight > 0) return tableHeight;
 
-    const totalHeight = this.getTotalRowsHeight() + this._getHeaderHeight() + this._getFrozenRowsHeight();
+    const totalHeight = this.getTotalRowsHeight() + this._getHeaderHeight() + this._getFrozenRowsHeight() + footer;
     return Math.min(tableHeight, totalHeight);
   }
 
