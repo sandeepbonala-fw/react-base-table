@@ -8,7 +8,7 @@ var TableFooterCell = function TableFooterCell(_ref) {
   var className = _ref.className,
       column = _ref.column,
       columnIndex = _ref.columnIndex;
-  return React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", {
     className: className
   }, column.title);
 };

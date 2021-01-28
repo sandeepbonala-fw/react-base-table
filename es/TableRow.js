@@ -9,9 +9,7 @@ import { renderElement } from './utils';
  * Row component for BaseTable
  */
 
-var TableRow =
-/*#__PURE__*/
-function (_React$PureComponent) {
+var TableRow = /*#__PURE__*/function (_React$PureComponent) {
   _inheritsLoose(TableRow, _React$PureComponent);
 
   function TableRow(props) {
@@ -78,7 +76,7 @@ function (_React$PureComponent) {
 
     var eventHandlers = this._getEventHandlers(rowEventHandlers);
 
-    return React.createElement(Tag, _extends({}, rest, {
+    return /*#__PURE__*/React.createElement(Tag, _extends({}, rest, {
       className: className,
       style: style
     }, eventHandlers), cells);

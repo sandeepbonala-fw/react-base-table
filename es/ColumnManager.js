@@ -6,9 +6,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 import { FrozenDirection } from './Column';
 
-var ColumnManager =
-/*#__PURE__*/
-function () {
+var ColumnManager = /*#__PURE__*/function () {
   function ColumnManager(columns, fixed) {
     this._origColumns = [];
     this.reset(columns, fixed);
@@ -39,7 +37,7 @@ function () {
         }
       }
 
-      return _objectSpread({}, column, {
+      return _objectSpread(_objectSpread({}, column), {}, {
         width: width
       });
     });
@@ -114,7 +112,7 @@ function () {
         var _objectSpread2;
 
         //columns placeholder for the fixed table above them
-        mainColumns.push(_objectSpread({}, column, (_objectSpread2 = {}, _objectSpread2[ColumnManager.PlaceholderKey] = true, _objectSpread2)));
+        mainColumns.push(_objectSpread(_objectSpread({}, column), {}, (_objectSpread2 = {}, _objectSpread2[ColumnManager.PlaceholderKey] = true, _objectSpread2)));
       });
 
       _this6.getVisibleColumns().forEach(function (column) {
@@ -124,7 +122,7 @@ function () {
       _this6.getRightFrozenColumns().forEach(function (column) {
         var _objectSpread3;
 
-        mainColumns.push(_objectSpread({}, column, (_objectSpread3 = {}, _objectSpread3[ColumnManager.PlaceholderKey] = true, _objectSpread3)));
+        mainColumns.push(_objectSpread(_objectSpread({}, column), {}, (_objectSpread3 = {}, _objectSpread3[ColumnManager.PlaceholderKey] = true, _objectSpread3)));
       });
 
       return mainColumns;
@@ -218,7 +216,7 @@ function () {
 
     var flexValue = flexGrow + " " + flexShrink + " auto";
 
-    var style = _objectSpread({}, column.style, {
+    var style = _objectSpread(_objectSpread({}, column.style), {}, {
       flex: flexValue,
       msFlex: flexValue,
       WebkitFlex: flexValue,

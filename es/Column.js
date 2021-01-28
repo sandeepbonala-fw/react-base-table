@@ -16,9 +16,7 @@ export var FrozenDirection = {
  * Column for BaseTable
  */
 
-var Column =
-/*#__PURE__*/
-function (_React$Component) {
+var Column = /*#__PURE__*/function (_React$Component) {
   _inheritsLoose(Column, _React$Component);
 
   function Column() {

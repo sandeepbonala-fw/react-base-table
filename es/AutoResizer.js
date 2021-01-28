@@ -15,7 +15,7 @@ var AutoResizer = function AutoResizer(_ref) {
   var disableHeight = typeof height === 'number';
 
   if (disableWidth && disableHeight) {
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: className,
       style: {
         width: width,
@@ -28,7 +28,7 @@ var AutoResizer = function AutoResizer(_ref) {
     }));
   }
 
-  return React.createElement(AutoSizer, {
+  return /*#__PURE__*/React.createElement(AutoSizer, {
     className: className,
     disableWidth: disableWidth,
     disableHeight: disableHeight,

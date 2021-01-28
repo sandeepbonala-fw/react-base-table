@@ -3,9 +3,7 @@ import _inheritsLoose from "@babel/runtime/helpers/inheritsLoose";
 import React from 'react';
 import PropTypes from 'prop-types';
 
-var TableFooter =
-/*#__PURE__*/
-function (_React$PureComponent) {
+var TableFooter = /*#__PURE__*/function (_React$PureComponent) {
   _inheritsLoose(TableFooter, _React$PureComponent);
 
   function TableFooter(props) {
@@ -79,12 +77,12 @@ function (_React$PureComponent) {
       height: height
     };
     var rowHeights = Array.isArray(footerHeight) ? footerHeight : [footerHeight];
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       role: "grid",
       ref: this._setRef,
       className: className,
       style: style
-    }, React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("div", {
       role: "rowgroup",
       style: innerStyle
     }, rowHeights.map(this.renderFooterRow), frozenData.map(this.renderFrozenRow)));

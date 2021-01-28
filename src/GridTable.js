@@ -57,6 +57,7 @@ class GridTable extends React.PureComponent {
   render() {
     const {
       containerStyle,
+      gridStyle,
       classPrefix,
       className,
       data,
@@ -90,7 +91,7 @@ class GridTable extends React.PureComponent {
             ref={this._setFooterRef}
             data={data}
             frozenData={frozenData}
-            width={width}
+            width={bodyWidth}
             height={footerHeight}
             rowWidth={headerWidth}
             rowHeight={rowHeight}
@@ -107,7 +108,7 @@ class GridTable extends React.PureComponent {
           data={data}
           itemKey={this._itemKey}
           frozenData={frozenData}
-          width={width}
+          width={bodyWidth}
           height={Math.max(height - headerHeight - footerHeight - frozenRowsHeight, 0)}
           rowHeight={rowHeight}
           rowCount={data.length}
@@ -120,6 +121,7 @@ class GridTable extends React.PureComponent {
           onScroll={onScroll}
           onItemsRendered={this._handleItemsRendered}
           children={this.renderRow}
+          style={gridStyle}
         />
         {headerHeight + frozenRowsHeight > 0 && (
           // put header after body and reverse the display order via css
@@ -130,7 +132,7 @@ class GridTable extends React.PureComponent {
             ref={this._setHeaderRef}
             data={data}
             frozenData={frozenData}
-            width={width}
+            width={bodyWidth}
             height={Math.min(headerHeight + frozenRowsHeight, height)}
             rowWidth={headerWidth}
             rowHeight={rowHeight}

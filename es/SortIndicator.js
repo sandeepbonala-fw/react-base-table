@@ -19,7 +19,7 @@ var SortIndicator = function SortIndicator(_ref) {
   var cls = cn('BaseTable__sort-indicator', className, {
     'BaseTable__sort-indicator--descending': sortOrder === SortOrder.DESC
   });
-  return React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", {
     className: cls,
     style: _objectSpread({
       userSelect: 'none',

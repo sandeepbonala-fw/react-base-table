@@ -6,13 +6,13 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 import React from 'react';
 export function renderElement(renderer, props) {
-  if (React.isValidElement(renderer)) {
-    return React.cloneElement(renderer, props);
+  if ( /*#__PURE__*/React.isValidElement(renderer)) {
+    return /*#__PURE__*/React.cloneElement(renderer, props);
   } else if (typeof renderer === 'function') {
     if (renderer.prototype && renderer.prototype.isReactComponent) {
-      return React.createElement(renderer, props);
+      return /*#__PURE__*/React.createElement(renderer, props);
     } else if (renderer.defaultProps) {
-      return renderer(_objectSpread({}, renderer.defaultProps, {}, props));
+      return renderer(_objectSpread(_objectSpread({}, renderer.defaultProps), props));
     }
 
     return renderer(props);
@@ -23,8 +23,8 @@ export function renderElement(renderer, props) {
 export function normalizeColumns(elements) {
   var columns = [];
   React.Children.forEach(elements, function (element) {
-    if (React.isValidElement(element) && element.key) {
-      var column = _objectSpread({}, element.props, {
+    if ( /*#__PURE__*/React.isValidElement(element) && element.key) {
+      var column = _objectSpread(_objectSpread({}, element.props), {}, {
         key: element.key
       });
 
