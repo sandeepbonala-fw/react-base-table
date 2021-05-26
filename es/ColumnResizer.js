@@ -57,9 +57,7 @@ var dragEventFor = eventsFor.mouse;
  * ColumnResizer for BaseTable
  */
 
-var ColumnResizer =
-/*#__PURE__*/
-function (_React$PureComponent) {
+var ColumnResizer = /*#__PURE__*/function (_React$PureComponent) {
   _inheritsLoose(ColumnResizer, _React$PureComponent);
 
   function ColumnResizer(props) {
@@ -104,7 +102,7 @@ function (_React$PureComponent) {
         minWidth = _this$props.minWidth,
         rest = _objectWithoutPropertiesLoose(_this$props, ["style", "column", "onResizeStart", "onResize", "onResizeStop", "minWidth"]);
 
-    return React.createElement("div", _extends({}, rest, {
+    return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
       ref: this._setHandleRef,
       onClick: this._handleClick,
       onMouseDown: this._handleMouseDown,

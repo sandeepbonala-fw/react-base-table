@@ -25,7 +25,7 @@ var TableHeaderRow = function TableHeaderRow(_ref) {
       column: column,
       columnIndex: columnIndex,
       headerIndex: headerIndex,
-      expandIcon: column.key === expandColumnKey && React.createElement(ExpandIcon, null)
+      expandIcon: column.key === expandColumnKey && /*#__PURE__*/React.createElement(ExpandIcon, null)
     });
   });
 
@@ -37,7 +37,7 @@ var TableHeaderRow = function TableHeaderRow(_ref) {
     });
   }
 
-  return React.createElement(Tag, _extends({}, rest, {
+  return /*#__PURE__*/React.createElement(Tag, _extends({}, rest, {
     className: className,
     style: style
   }), cells);

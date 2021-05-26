@@ -528,7 +528,7 @@ class BaseTable extends React.PureComponent {
 
   renderMainTable() {
     const { width, headerHeight, rowHeight, fixed, ...rest } = this.props;
-    const height = this._getTableHeight();
+    const height = this._getTableHeight()  - (this._data.length > 0 ? this._horizontalScrollbarSize : 0);
 
     let tableWidth = width - this._verticalScrollbarSize;
     if (fixed) {
@@ -536,6 +536,12 @@ class BaseTable extends React.PureComponent {
       // make sure `scrollLeft` is always integer to fix a sync bug when scrolling to end horizontally
       tableWidth = Math.max(Math.round(columnsWidth), tableWidth);
     }
+    rest.containerStyle = rest.containerStyle || {};
+    rest.containerStyle.overflow = "auto";
+    rest.containerStyle.width = width;
+    // rest.containerStyle.height = "100%";
+    rest.gridStyle = rest.gridStyle || {};
+    rest.gridStyle.overflowX = "hidden";
     return (
       <GridTable
         {...rest}
@@ -598,21 +604,20 @@ class BaseTable extends React.PureComponent {
 
     const containerHeight = this._getFrozenContainerHeight();
     const columnsWidth = this.columnManager.getRightFrozenColumnsWidth();
-    const scrollbarWidth = this._verticalScrollbarSize;
     return (
       <GridTable
         {...rest}
         {...this.state}
-        containerStyle={this._getLeftTableContainerStyle(columnsWidth + scrollbarWidth, width, containerHeight)}
+        containerStyle={this._getLeftTableContainerStyle(columnsWidth, width, containerHeight)}
         className={this._prefixClass('table-frozen-right')}
         ref={this._setRightTableRef}
         data={this._data}
         columns={this.columnManager.getRightFrozenColumns()}
-        width={columnsWidth + scrollbarWidth}
+        width={columnsWidth}
         height={containerHeight}
         headerHeight={headerHeight}
         rowHeight={rowHeight}
-        headerWidth={columnsWidth + scrollbarWidth}
+        headerWidth={columnsWidth}
         bodyWidth={columnsWidth}
         headerRenderer={this.renderHeader}
         footerRenderer={this.renderFooter}
@@ -799,13 +804,13 @@ class BaseTable extends React.PureComponent {
       const frozenRowsHeight = this._getFrozenRowsHeight();
       const totalRowsHeight = this.getTotalRowsHeight();
       const headerHeight = this._getHeaderHeight();
-      const totalHeight = headerHeight + frozenRowsHeight + totalRowsHeight + footer + this._horizontalScrollbarSize;
+      const totalHeight = headerHeight + frozenRowsHeight + totalRowsHeight + footer;
       tableHeight = Math.min(totalHeight, maxHeight);
     }else{
       const frozenRowsHeight = this._getFrozenRowsHeight();
       const totalRowsHeight = this.getTotalRowsHeight();
       const headerHeight = this._getHeaderHeight();
-      const totalHeight = headerHeight + frozenRowsHeight + totalRowsHeight + footer + this._horizontalScrollbarSize ;
+      const totalHeight = headerHeight + frozenRowsHeight + totalRowsHeight + footer;
       tableHeight = Math.min(totalHeight, height);
     }
     return tableHeight;

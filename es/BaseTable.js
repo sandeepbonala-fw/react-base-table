@@ -53,9 +53,7 @@ var EMPTY_ARRAY = [];
  * React table component
  */
 
-var BaseTable =
-/*#__PURE__*/
-function (_React$PureComponent) {
+var BaseTable = /*#__PURE__*/function (_React$PureComponent) {
   _inheritsLoose(BaseTable, _React$PureComponent);
 
   function BaseTable(props) {
@@ -291,7 +289,7 @@ function (_React$PureComponent) {
 
     var ExpandIcon = this._getComponent('ExpandIcon');
 
-    return React.createElement(ExpandIcon, _extends({
+    return /*#__PURE__*/React.createElement(ExpandIcon, _extends({
       depth: depth,
       expandable: expandable,
       expanded: expanded
@@ -327,7 +325,7 @@ function (_React$PureComponent) {
     var depth = this._depthMap[rowKey] || 0;
     var className = cn(this._prefixClass('row'), rowClass, (_cn = {}, _cn[this._prefixClass("row--depth-" + depth)] = !!expandColumnKey && rowIndex >= 0, _cn[this._prefixClass('row--expanded')] = !!expandColumnKey && this.getExpandedRowKeys().indexOf(rowKey) >= 0, _cn[this._prefixClass('row--hovered')] = !isScrolling && rowKey === this.state.hoveredRowKey, _cn[this._prefixClass('row--clicked')] = rowKey === this.state.clickedRowKey, _cn[this._prefixClass('row--frozen')] = depth === 0 && rowIndex < 0, _cn[this._prefixClass('row--customized')] = rowRenderer, _cn));
 
-    var rowProps = _objectSpread({}, extraProps, {
+    var rowProps = _objectSpread(_objectSpread({}, extraProps), {}, {
       role: 'row',
       key: "row-" + rowKey,
       isScrolling: isScrolling,
@@ -349,7 +347,7 @@ function (_React$PureComponent) {
       onRowClick: this.columnManager.hasFrozenColumns() ? this._handleRowClick : null
     });
 
-    return React.createElement(TableRow, rowProps);
+    return /*#__PURE__*/React.createElement(TableRow, rowProps);
   };
 
   _proto.renderRowCell = function renderRowCell(_ref3) {
@@ -364,7 +362,7 @@ function (_React$PureComponent) {
         expandIcon = _ref3.expandIcon;
 
     if (column[ColumnManager.PlaceholderKey]) {
-      return React.createElement("div", {
+      return /*#__PURE__*/React.createElement("div", {
         key: "row-" + rowData[this.props.rowKey] + "-cell-" + column.key + "-placeholder",
         className: this._prefixClass('row-cell-placeholder'),
         style: this.columnManager.getColumnStyle(column.key)
@@ -395,7 +393,7 @@ function (_React$PureComponent) {
       rowIndex: rowIndex,
       container: this
     };
-    var cell = renderElement(cellRenderer || React.createElement(TableCell, {
+    var cell = renderElement(cellRenderer || /*#__PURE__*/React.createElement(TableCell, {
       className: this._prefixClass('row-cell-text')
     }), cellProps);
     var cellCls = callOrReturn(className, {
@@ -420,7 +418,7 @@ function (_React$PureComponent) {
         rest = _objectWithoutPropertiesLoose(_ref4, ["tagName"]);
 
     var Tag = tagName || 'div';
-    return React.createElement(Tag, _extends({
+    return /*#__PURE__*/React.createElement(Tag, _extends({
       role: "gridcell",
       key: "row-" + rowData[this.props.rowKey] + "-cell-" + column.key
     }, rest, {
@@ -448,7 +446,7 @@ function (_React$PureComponent) {
     });
     var className = cn(this._prefixClass('header-row'), headerClass, (_cn3 = {}, _cn3[this._prefixClass('header-row--resizing')] = !!this.state.resizingKey, _cn3[this._prefixClass('header-row--customized')] = headerRenderer, _cn3));
 
-    var headerProps = _objectSpread({}, extraProps, {
+    var headerProps = _objectSpread(_objectSpread({}, extraProps), {}, {
       role: 'row',
       key: "header-" + headerIndex,
       className: className,
@@ -461,7 +459,7 @@ function (_React$PureComponent) {
       expandIcon: this._getComponent('ExpandIcon')
     });
 
-    return React.createElement(TableHeaderRow, headerProps);
+    return /*#__PURE__*/React.createElement(TableHeaderRow, headerProps);
   };
 
   _proto.renderFooter = function renderFooter(_ref6) {
@@ -483,7 +481,7 @@ function (_React$PureComponent) {
     });
     var className = cn(this._prefixClass('footer-row'), footerClass, (_cn4 = {}, _cn4[this._prefixClass('footer-row--resizing')] = !!this.state.resizingKey, _cn4[this._prefixClass('footer-row--customized')] = footerRenderer, _cn4));
 
-    var footerProps = _objectSpread({}, extraProps, {
+    var footerProps = _objectSpread(_objectSpread({}, extraProps), {}, {
       role: 'row',
       key: "footer-" + footerIndex,
       className: className,
@@ -495,7 +493,7 @@ function (_React$PureComponent) {
       expandColumnKey: this.props.expandColumnKey
     });
 
-    return React.createElement(TableFooterRow, footerProps);
+    return /*#__PURE__*/React.createElement(TableFooterRow, footerProps);
   };
 
   _proto.renderHeaderCell = function renderHeaderCell(_ref7) {
@@ -508,7 +506,7 @@ function (_React$PureComponent) {
         expandIcon = _ref7.expandIcon;
 
     if (column[ColumnManager.PlaceholderKey]) {
-      return React.createElement("div", {
+      return /*#__PURE__*/React.createElement("div", {
         key: "header-" + headerIndex + "-cell-" + column.key + "-placeholder",
         className: this._prefixClass('header-cell-placeholder'),
         style: this.columnManager.getColumnStyle(column.key)
@@ -533,7 +531,7 @@ function (_React$PureComponent) {
       headerIndex: headerIndex,
       container: this
     };
-    var cell = renderElement(headerRenderer || React.createElement(TableHeaderCell, {
+    var cell = renderElement(headerRenderer || /*#__PURE__*/React.createElement(TableHeaderCell, {
       className: this._prefixClass('header-cell-text')
     }), cellProps);
     var sorting, sortOrder;
@@ -566,7 +564,7 @@ function (_React$PureComponent) {
         rest = _objectWithoutPropertiesLoose(_ref8, ["tagName"]);
 
     var Tag = tagName || 'div';
-    return React.createElement(Tag, _extends({
+    return /*#__PURE__*/React.createElement(Tag, _extends({
       role: "gridcell",
       key: "header-" + headerIndex + "-cell-" + column.key,
       onClick: column.sortable ? this._handleColumnSort : null
@@ -574,10 +572,10 @@ function (_React$PureComponent) {
       className: cls,
       style: this.columnManager.getColumnStyle(column.key),
       "data-key": column.key
-    }), expandIcon, cell, column.sortable && React.createElement(SortIndicator, {
+    }), expandIcon, cell, column.sortable && /*#__PURE__*/React.createElement(SortIndicator, {
       sortOrder: sortOrder,
       className: cn(this._prefixClass('sort-indicator'), (_cn6 = {}, _cn6[this._prefixClass('sort-indicator--descending')] = sortOrder === SortOrder.DESC, _cn6))
-    }), column.resizable && React.createElement(ColumnResizer, {
+    }), column.resizable && /*#__PURE__*/React.createElement(ColumnResizer, {
       className: this._prefixClass('column-resizer'),
       column: column,
       onResizeStart: this._handleColumnResizeStart,
@@ -595,7 +593,7 @@ function (_React$PureComponent) {
         footerIndex = _ref9.footerIndex;
 
     if (column[ColumnManager.PlaceholderKey]) {
-      return React.createElement("div", {
+      return /*#__PURE__*/React.createElement("div", {
         key: "footer-" + footerIndex + "-cell-" + column.key + "-placeholder",
         className: this._prefixClass('footer-cell-placeholder'),
         style: this.columnManager.getColumnStyle(column.key)
@@ -615,7 +613,7 @@ function (_React$PureComponent) {
       footerIndex: footerIndex,
       container: this
     };
-    var cell = renderElement(footerRenderer || React.createElement(TableFooterCell, {
+    var cell = renderElement(footerRenderer || /*#__PURE__*/React.createElement(TableFooterCell, {
       className: this._prefixClass('footer-cell-text')
     }), cellProps);
     var cellCls = callOrReturn(footerClassName, {
@@ -637,7 +635,7 @@ function (_React$PureComponent) {
         rest = _objectWithoutPropertiesLoose(_ref10, ["tagName"]);
 
     var Tag = tagName || 'div';
-    return React.createElement(Tag, _extends({
+    return /*#__PURE__*/React.createElement(Tag, _extends({
       role: "gridcell",
       key: "footer-" + footerIndex + "-cell-" + column.key
     }, rest, {
@@ -655,8 +653,7 @@ function (_React$PureComponent) {
         fixed = _this$props6.fixed,
         rest = _objectWithoutPropertiesLoose(_this$props6, ["width", "headerHeight", "rowHeight", "fixed"]);
 
-    var height = this._getTableHeight();
-
+    var height = this._getTableHeight() - (this._data.length > 0 ? this._horizontalScrollbarSize : 0);
     var tableWidth = width - this._verticalScrollbarSize;
 
     if (fixed) {
@@ -665,7 +662,13 @@ function (_React$PureComponent) {
       tableWidth = Math.max(Math.round(columnsWidth), tableWidth);
     }
 
-    return React.createElement(GridTable, _extends({}, rest, this.state, {
+    rest.containerStyle = rest.containerStyle || {};
+    rest.containerStyle.overflow = "auto";
+    rest.containerStyle.width = width; // rest.containerStyle.height = "100%";
+
+    rest.gridStyle = rest.gridStyle || {};
+    rest.gridStyle.overflowX = "hidden";
+    return /*#__PURE__*/React.createElement(GridTable, _extends({}, rest, this.state, {
       className: this._prefixClass('table-main'),
       ref: this._setMainTableRef,
       data: this._data,
@@ -697,7 +700,7 @@ function (_React$PureComponent) {
 
     var offset = this._verticalScrollbarSize || 20;
     var columnsWidth = this.columnManager.getLeftFrozenColumnsWidth();
-    return React.createElement(GridTable, _extends({}, rest, this.state, {
+    return /*#__PURE__*/React.createElement(GridTable, _extends({}, rest, this.state, {
       containerStyle: this._getLeftTableContainerStyle(columnsWidth, width, containerHeight),
       className: this._prefixClass('table-frozen-left'),
       ref: this._setLeftTableRef,
@@ -729,18 +732,17 @@ function (_React$PureComponent) {
     var containerHeight = this._getFrozenContainerHeight();
 
     var columnsWidth = this.columnManager.getRightFrozenColumnsWidth();
-    var scrollbarWidth = this._verticalScrollbarSize;
-    return React.createElement(GridTable, _extends({}, rest, this.state, {
-      containerStyle: this._getLeftTableContainerStyle(columnsWidth + scrollbarWidth, width, containerHeight),
+    return /*#__PURE__*/React.createElement(GridTable, _extends({}, rest, this.state, {
+      containerStyle: this._getLeftTableContainerStyle(columnsWidth, width, containerHeight),
       className: this._prefixClass('table-frozen-right'),
       ref: this._setRightTableRef,
       data: this._data,
       columns: this.columnManager.getRightFrozenColumns(),
-      width: columnsWidth + scrollbarWidth,
+      width: columnsWidth,
       height: containerHeight,
       headerHeight: headerHeight,
       rowHeight: rowHeight,
-      headerWidth: columnsWidth + scrollbarWidth,
+      headerWidth: columnsWidth,
       bodyWidth: columnsWidth,
       headerRenderer: this.renderHeader,
       footerRenderer: this.renderFooter,
@@ -782,7 +784,7 @@ function (_React$PureComponent) {
       left: left,
       height: this._getTableHeight() - this._horizontalScrollbarSize
     };
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: this._prefixClass('resizing-line'),
       style: style
     });
@@ -806,7 +808,7 @@ function (_React$PureComponent) {
 
     var headerHeight = this._getHeaderHeight();
 
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: this._prefixClass('empty-layer'),
       style: {
         top: headerHeight,
@@ -817,7 +819,7 @@ function (_React$PureComponent) {
 
   _proto.renderOverlay = function renderOverlay() {
     var overlayRenderer = this.props.overlayRenderer;
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: this._prefixClass('overlay')
     }, !!overlayRenderer && renderElement(overlayRenderer));
   };
@@ -850,14 +852,14 @@ function (_React$PureComponent) {
 
     this._calcScrollbarSizes();
 
-    var containerStyle = _objectSpread({}, style, {
+    var containerStyle = _objectSpread(_objectSpread({}, style), {}, {
       width: width,
       height: this._getTableHeight(),
       position: 'relative'
     });
 
     var cls = cn(classPrefix, className, (_cn8 = {}, _cn8[classPrefix + "--fixed"] = fixed, _cn8[classPrefix + "--expandable"] = !!expandColumnKey, _cn8[classPrefix + "--empty"] = data.length === 0, _cn8[classPrefix + "--has-frozen-rows"] = frozenData.length > 0, _cn8[classPrefix + "--has-frozen-columns"] = this.columnManager.hasFrozenColumns(), _cn8[classPrefix + "--disabled"] = disabled, _cn8));
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       ref: this._setContainerRef,
       className: cls,
       style: containerStyle
@@ -951,7 +953,7 @@ function (_React$PureComponent) {
 
       var headerHeight = this._getHeaderHeight();
 
-      var totalHeight = headerHeight + frozenRowsHeight + totalRowsHeight + footer + this._horizontalScrollbarSize;
+      var totalHeight = headerHeight + frozenRowsHeight + totalRowsHeight + footer;
       tableHeight = Math.min(totalHeight, maxHeight);
     } else {
       var _frozenRowsHeight = this._getFrozenRowsHeight();
@@ -960,7 +962,7 @@ function (_React$PureComponent) {
 
       var _headerHeight = this._getHeaderHeight();
 
-      var _totalHeight = _headerHeight + _frozenRowsHeight + _totalRowsHeight + footer + this._horizontalScrollbarSize;
+      var _totalHeight = _headerHeight + _frozenRowsHeight + _totalRowsHeight + footer;
 
       tableHeight = Math.min(_totalHeight, height);
     }

@@ -12,9 +12,9 @@ var TableCell = function TableCell(_ref) {
       columnIndex = _ref.columnIndex,
       rowData = _ref.rowData,
       rowIndex = _ref.rowIndex;
-  return React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", {
     className: className
-  }, React.isValidElement(cellData) ? cellData : toString(cellData));
+  }, /*#__PURE__*/React.isValidElement(cellData) ? cellData : toString(cellData));
 };
 
 TableCell.propTypes = {

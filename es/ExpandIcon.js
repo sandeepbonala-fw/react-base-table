@@ -9,9 +9,7 @@ import cn from 'classnames';
  * default ExpandIcon for BaseTable
  */
 
-var ExpandIcon =
-/*#__PURE__*/
-function (_React$PureComponent) {
+var ExpandIcon = /*#__PURE__*/function (_React$PureComponent) {
   _inheritsLoose(ExpandIcon, _React$PureComponent);
 
   function ExpandIcon(props) {
@@ -37,7 +35,7 @@ function (_React$PureComponent) {
     var cls = cn('BaseTable__expand-icon', {
       'BaseTable__expand-icon--expanded': expanded
     });
-    return React.createElement("div", _extends({}, rest, {
+    return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
       className: cls,
       onClick: expandable && onExpand ? this._handleClick : null,
       style: {

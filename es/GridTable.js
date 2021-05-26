@@ -18,9 +18,7 @@ import Footer from './TableFooter';
  * A wrapper of the Grid for internal only
  */
 
-var GridTable =
-/*#__PURE__*/
-function (_React$PureComponent) {
+var GridTable = /*#__PURE__*/function (_React$PureComponent) {
   _inheritsLoose(GridTable, _React$PureComponent);
 
   function GridTable(props) {
@@ -85,7 +83,7 @@ function (_React$PureComponent) {
         columns = _this$props.columns,
         rowRenderer = _this$props.rowRenderer;
     var rowData = data[args.rowIndex];
-    return rowRenderer(_objectSpread({}, args, {
+    return rowRenderer(_objectSpread(_objectSpread({}, args), {}, {
       columns: columns,
       rowData: rowData
     }));
@@ -94,6 +92,7 @@ function (_React$PureComponent) {
   _proto.render = function render() {
     var _this$props2 = this.props,
         containerStyle = _this$props2.containerStyle,
+        gridStyle = _this$props2.gridStyle,
         classPrefix = _this$props2.classPrefix,
         className = _this$props2.className,
         data = _this$props2.data,
@@ -109,7 +108,7 @@ function (_React$PureComponent) {
         overscanRowCount = _this$props2.overscanRowCount,
         style = _this$props2.style,
         onScrollbarPresenceChange = _this$props2.onScrollbarPresenceChange,
-        rest = _objectWithoutPropertiesLoose(_this$props2, ["containerStyle", "classPrefix", "className", "data", "frozenData", "width", "height", "rowHeight", "headerWidth", "bodyWidth", "useIsScrolling", "onScroll", "hoveredRowKey", "overscanRowCount", "style", "onScrollbarPresenceChange"]);
+        rest = _objectWithoutPropertiesLoose(_this$props2, ["containerStyle", "gridStyle", "classPrefix", "className", "data", "frozenData", "width", "height", "rowHeight", "headerWidth", "bodyWidth", "useIsScrolling", "onScroll", "hoveredRowKey", "overscanRowCount", "style", "onScrollbarPresenceChange"]);
 
     var headerHeight = this._getHeaderHeight();
 
@@ -121,15 +120,15 @@ function (_React$PureComponent) {
     var containerProps = containerStyle ? {
       style: containerStyle
     } : null;
-    return React.createElement("div", _extends({
+    return /*#__PURE__*/React.createElement("div", _extends({
       role: "table",
       className: cls
-    }, containerProps), footerHeight > 0 && React.createElement(Footer, _extends({}, rest, {
+    }, containerProps), footerHeight > 0 && /*#__PURE__*/React.createElement(Footer, _extends({}, rest, {
       className: classPrefix + "__footer",
       ref: this._setFooterRef,
       data: data,
       frozenData: frozenData,
-      width: width,
+      width: bodyWidth,
       height: footerHeight,
       rowWidth: headerWidth,
       rowHeight: rowHeight,
@@ -137,13 +136,13 @@ function (_React$PureComponent) {
       headerRenderer: this.props.footerRenderer,
       rowRenderer: this.props.rowRenderer,
       hoveredRowKey: frozenRowCount > 0 ? hoveredRowKey : null
-    })), React.createElement(Grid, _extends({}, rest, {
+    })), /*#__PURE__*/React.createElement(Grid, _extends({}, rest, {
       className: classPrefix + "__body",
       ref: this._setBodyRef,
       data: data,
       itemKey: this._itemKey,
       frozenData: frozenData,
-      width: width,
+      width: bodyWidth,
       height: Math.max(height - headerHeight - footerHeight - frozenRowsHeight, 0),
       rowHeight: rowHeight,
       rowCount: data.length,
@@ -155,15 +154,18 @@ function (_React$PureComponent) {
       hoveredRowKey: hoveredRowKey,
       onScroll: onScroll,
       onItemsRendered: this._handleItemsRendered,
-      children: this.renderRow
-    })), headerHeight + frozenRowsHeight > 0 && // put header after body and reverse the display order via css
+      children: this.renderRow,
+      style: gridStyle
+    })), headerHeight + frozenRowsHeight > 0 &&
+    /*#__PURE__*/
+    // put header after body and reverse the display order via css
     // to prevent header's shadow being covered by body
     React.createElement(Header, _extends({}, rest, {
       className: classPrefix + "__header",
       ref: this._setHeaderRef,
       data: data,
       frozenData: frozenData,
-      width: width,
+      width: bodyWidth,
       height: Math.min(headerHeight + frozenRowsHeight, height),
       rowWidth: headerWidth,
       rowHeight: rowHeight,
